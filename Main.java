@@ -14,8 +14,15 @@ public class Main {
 
 					break;
 				case 2:
-					Cliente obj = new Cliente(null, null, null);
-					Clientes.add(obj.criarConta());
+					MenuCliente MenuCliente = new MenuCliente("Menu Cliente", Arrays.asList("Criar cliente", "Excluir cliente"));
+					int x = MenuCliente.getSelection();
+					if (x==1){
+						Cliente obj = new Cliente(null, null, null);
+						Clientes.add(obj.criarConta());	
+					}else{
+						// Se excluir cliente
+					}
+					
 					break;
 				case 3:
 
@@ -44,7 +51,7 @@ public class Main {
 			System.out.println(cliente1.getCpf());
 			System.out.println(cliente1.getGenero());
 		}
-		System.out.println("Fim");
+		//System.out.println("Fim");
 	}
 
 }
