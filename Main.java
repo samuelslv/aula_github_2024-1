@@ -11,11 +11,11 @@ public class Main {
 			op = mainMenu.getSelection();
 			switch (op) {
 				case 1:
-					Cliente obj = new Cliente(null, null, null);
-					Clientes.add(obj.criarConta());
+
 					break;
 				case 2:
-
+					Cliente obj = new Cliente(null, null, null);
+					Clientes.add(obj.criarConta());
 					break;
 				case 3:
 
@@ -39,7 +39,7 @@ public class Main {
 
 		int i = 1;
 		for (Cliente cliente1 : Clientes) {
-			System.out.println("Cliente #" + i++);
+			System.out.println("\nCliente #" + i++);
 			System.out.println(cliente1.getNome());
 			System.out.println(cliente1.getCpf());
 			System.out.println(cliente1.getGenero());
