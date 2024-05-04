@@ -35,6 +35,7 @@ public class Menu {
 			catch (NumberFormatException e) {
 				op =0;
 			}
+			
 			if (op>=i){
 				System.out.println("Opcao errada!");
 				op=0;
