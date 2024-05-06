@@ -1,16 +1,23 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		ArrayList<Cliente> Clientes = new ArrayList<>();
 		int op;
+		Scanner s = new Scanner(System.in);
 		do {
 			Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Realizar Operacoes", "Sair"));
 			op = mainMenu.getSelection();
 			switch (op) {
 				case 1:
+					pesquisar cliente
+						se existir:
+							criar Conta
+						se nao:
+							Ou nao criar conta ou criar cliente para criar conta
 
 					break;
 				case 2:
@@ -25,6 +32,11 @@ public class Main {
 					
 					break;
 				case 3:
+					Selecionar qual tipo de operação, Depostio ou Saque:
+					Se deposito:
+						Realizar deposito
+					Se saque:
+						verificar se valor vai negativar o saldo, se sim, nao realizar
 
 					break;
 				case 4:
