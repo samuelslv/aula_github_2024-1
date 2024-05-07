@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class Cliente {
     private String nome;
@@ -41,15 +41,5 @@ public class Cliente {
         this.CPF = cpf;
     }
 
-    public Cliente criarConta() {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Insira seu nome:");
-        String nome = s.nextLine();
-        System.out.println("Insira seu genero:");
-        String genero = s.nextLine();
-        System.out.println("Insira seu CPF:");
-        String CPF = s.nextLine();
-
-        return new Cliente(nome, genero, CPF);
-    }
+   
 }
