@@ -5,6 +5,10 @@ public class Cliente {
     private String genero;
     private String CPF;
 
+    public Cliente() {
+        
+    }
+
     public Cliente(String nome, String cpf, String genero) {
         this.CPF = cpf;
         this.genero = genero;
@@ -41,7 +45,7 @@ public class Cliente {
         this.CPF = cpf;
     }
 
-    public Cliente criarConta() {
+    public Cliente criarCliente() {
         Scanner s = new Scanner(System.in);
         System.out.println("Insira seu nome:");
         String nome = s.nextLine();
