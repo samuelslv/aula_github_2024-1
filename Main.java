@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Cliente> clientes = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+
         int opcao = 0;
 
         do {
@@ -13,7 +14,6 @@ public class Main {
             // Exibe o menu principal usando a classe Menu
             Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar clientes", "Sair"));
             opcao = mainMenu.getSelection();
-
             switch (opcao) {
                 case 1:
                     // Operações relacionadas a Conta
@@ -33,6 +33,7 @@ public class Main {
                         System.out.println("Conta já existente para este cliente.");
                         // Lógica para criar ou gerenciar contas existentes
                     } else {
+
                         System.out
                                 .print("Cliente não encontrado. Deseja criar um novo cliente para criar a conta? (s/n): ");
                         String criarNovoCliente = scanner.next();
@@ -54,8 +55,8 @@ public class Main {
 
                 case 2:
                     // Menu Cliente usando MenuCliente
-                    MenuCliente menuCliente = new MenuCliente("Menu Cliente",
-                            Arrays.asList("Criar cliente", "Excluir cliente"));
+
+                    MenuCliente menuCliente = new MenuCliente("Menu Cliente", Arrays.asList("Criar cliente", "Excluir cliente"));
                     int escolhaCliente = menuCliente.getSelection();
 
                     if (escolhaCliente == 1) {
@@ -85,6 +86,7 @@ public class Main {
                     } else if (escolhaOperacao == 2) {
                         System.out.println("Saque realizado.");
                         // Adicionar lógica de saque aqui
+
                     }
                     break;
 
