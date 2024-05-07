@@ -10,11 +10,11 @@ public class Main {
 
         do {
 
+
             // Exibe o menu principal usando a classe Menu
             Menu mainMenu = new Menu("Menu Principal",
                     Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar clientes", "Sair"));
             opcao = mainMenu.getSelection();
-
             switch (opcao) {
                 case 1:
                     // Operações relacionadas a Conta
