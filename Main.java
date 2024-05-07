@@ -6,14 +6,15 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Cliente> clientes = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-
         int opcao = 0;
 
         do {
 
             // Exibe o menu principal usando a classe Menu
-            Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar clientes", "Sair"));
+            Menu mainMenu = new Menu("Menu Principal",
+                    Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar clientes", "Sair"));
             opcao = mainMenu.getSelection();
+
             switch (opcao) {
                 case 1:
                     // Operações relacionadas a Conta
@@ -33,20 +34,14 @@ public class Main {
                         System.out.println("Conta já existente para este cliente.");
                         // Lógica para criar ou gerenciar contas existentes
                     } else {
-
                         System.out
                                 .print("Cliente não encontrado. Deseja criar um novo cliente para criar a conta? (s/n): ");
                         String criarNovoCliente = scanner.next();
                         scanner.nextLine(); // Consome a quebra de linha
 
                         if (criarNovoCliente.equalsIgnoreCase("s")) {
-                            System.out.print("Nome: ");
-                            String nome = scanner.nextLine();
-                            System.out.print("CPF: ");
-                            String cpf = scanner.nextLine();
-                            System.out.print("Gênero: ");
-                            String genero = scanner.nextLine();
-                            clientes.add(new Cliente(nome, cpf, genero));
+                            Cliente novoCliente = new Cliente();
+                            clientes.add(novoCliente.criarCliente());
                         } else {
                             System.out.println("Operação cancelada.");
                         }
@@ -55,18 +50,13 @@ public class Main {
 
                 case 2:
                     // Menu Cliente usando MenuCliente
-
-                    MenuCliente menuCliente = new MenuCliente("Menu Cliente", Arrays.asList("Criar cliente", "Excluir cliente"));
+                    MenuCliente menuCliente = new MenuCliente("Menu Cliente",
+                            Arrays.asList("Criar cliente", "Excluir cliente"));
                     int escolhaCliente = menuCliente.getSelection();
 
                     if (escolhaCliente == 1) {
-                        System.out.print("Nome: ");
-                        String nome = scanner.nextLine();
-                        System.out.print("CPF: ");
-                        String cpf = scanner.nextLine();
-                        System.out.print("Gênero: ");
-                        String genero = scanner.nextLine();
-                        clientes.add(new Cliente(nome, cpf, genero));
+                        Cliente novoCliente = new Cliente();
+                        clientes.add(novoCliente.criarCliente());
                     } else if (escolhaCliente == 2) {
                         System.out.print("Digite o CPF do cliente para excluir: ");
                         String cpfExcluir = scanner.nextLine();
@@ -86,7 +76,6 @@ public class Main {
                     } else if (escolhaOperacao == 2) {
                         System.out.println("Saque realizado.");
                         // Adicionar lógica de saque aqui
-
                     }
                     break;
 
@@ -99,11 +88,11 @@ public class Main {
                         System.out.println(cliente1.getGenero());
                     }
 
-					break;
+                    break;
                 case 5:
-					System.out.println("SAIR");
+                    System.out.println("SAIR");
 
-					break;
+                    break;
 
             }
         } while (opcao != 5);
