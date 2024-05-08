@@ -4,6 +4,7 @@ public class Cliente {
     private String nome;
     private String genero;
     private String CPF;
+    private double saldo;
 
     public Cliente() {
         
@@ -13,6 +14,7 @@ public class Cliente {
         this.CPF = cpf;
         this.genero = genero;
         this.nome = nome;
+        this.saldo = 0.0;
     }
 
     // Getter para o atributo nome
@@ -43,6 +45,22 @@ public class Cliente {
     // Setter para o atributo cpf
     public void setCpf(String cpf) {
         this.CPF = cpf;
+    }
+
+    private double getSaldo(){
+        return this.saldo;
+    }
+
+    private void setSaldo(double saldo){
+        this.saldo = saldo;
+    }
+
+    public boolean deposito (double valor){
+        if (valor <0) {
+            return false;
+        }
+        this.setSaldo(this.getSaldo()+valor);
+        return true;
     }
 
     public Cliente criarConta() {
