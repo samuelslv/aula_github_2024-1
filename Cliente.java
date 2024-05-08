@@ -1,20 +1,19 @@
-import java.util.Scanner;
-
 public class Cliente {
     private String nome;
-    private String genero;
     private String CPF;
-    private double saldo;
+    private String genero;
+    private Conta conta;
+    //private double saldo;
 
     public Cliente() {
         
     }
 
-    public Cliente(String nome, String cpf, String genero) {
-        this.CPF = cpf;
-        this.genero = genero;
+    public Cliente(String nome, String CPF, String genero) {
         this.nome = nome;
-        this.saldo = 0.0;
+        this.CPF = CPF;
+        this.genero = genero;
+        this.conta = new Conta();
     }
 
     // Getter para o atributo nome
@@ -42,48 +41,49 @@ public class Cliente {
         return CPF;
     }
 
+    public int getNumConta() {
+    	return this.conta.getNumero();
+    }
+    
+    public double getSaldoConta() {
+    	return this.conta.getSaldo();
+    }
+    
+    public void setNumConta(int proximoNumeroConta) {
+    	this.conta.setNumConta(proximoNumeroConta);
+    }
+    
     // Setter para o atributo cpf
     public void setCpf(String cpf) {
         this.CPF = cpf;
     }
 
-    private double getSaldo(){
-        return this.saldo;
-    }
-
-    private void setSaldo(double saldo){
-        this.saldo = saldo;
-    }
-
     public boolean deposito (double valor){
-        if (valor <0) {
+        if (!this.conta.depositar(valor)) {
             return false;
         }
-        this.setSaldo(this.getSaldo()+valor);
+        //this.conta.depositar(valor);
         return true;
     }
 
     public boolean saque (double valor){
-        if (valor <0) {
-            return false;
+        if (!this.conta.saque(valor)) {
+        	return false;
         }
-        if (valor> this.getSaldo()) {
-            return false;
-        }
-        this.setSaldo(this.getSaldo()-valor);
+        //this.conta.saque(valor);
         return true;
     }
     
 
-    public Cliente criarConta() {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Insira seu nome:");
-        String nome = s.nextLine();
-        System.out.println("Insira seu genero:");
-        String genero = s.nextLine();
-        System.out.println("Insira seu CPF:");
-        String CPF = s.nextLine();
-
-        return new Cliente(nome, genero, CPF);
-    }
+//    public Cliente criarConta() {
+//        Scanner s = new Scanner(System.in);
+//        System.out.println("Insira seu nome:");
+//        String nome = s.nextLine();
+//        System.out.println("Insira seu genero:");
+//        String genero = s.nextLine();
+//        System.out.println("Insira seu CPF:");
+//        String CPF = s.nextLine();
+//
+//        return new Cliente(nome, genero, CPF);
+//    }
 }
