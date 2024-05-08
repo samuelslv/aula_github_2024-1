@@ -63,6 +63,18 @@ public class Cliente {
         return true;
     }
 
+    public boolean saque (double valor){
+        if (valor <0) {
+            return false;
+        }
+        if (valor> this.getSaldo()) {
+            return false;
+        }
+        this.setSaldo(this.getSaldo()-valor);
+        return true;
+    }
+    
+
     public Cliente criarConta() {
         Scanner s = new Scanner(System.in);
         System.out.println("Insira seu nome:");
