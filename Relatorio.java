@@ -12,4 +12,14 @@ public class Relatorio {
         }
     }
 
+    public static void RelatorioDeDepositoCliente(Cliente cl) {
+        ArrayList<Transacao> transacoes = cl.getTransacoes();
+        System.out.println("Relatório de Depósitos do Cliente: " + cl.getNome());
+        for (Transacao t : transacoes) {
+            if (t.getTipo() == 2) {
+                System.out.println("Valor: " + t.getValor());
+            }
+        }              
+    }
+
 }
