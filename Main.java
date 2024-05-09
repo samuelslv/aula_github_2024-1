@@ -12,7 +12,7 @@ public class Main {
 		do {
 			// Exibe o menu principal usando a classe Menu
 			Menu mainMenu = new Menu("Menu Principal",
-					Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar Contas", "Relatorio Saque", "Sair"));
+					Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar Contas", "Relatorio Saque", "Relatorio Deposito", "Sair"));
 			opcao = mainMenu.getSelection();
 
 			switch (opcao) {
@@ -206,13 +206,39 @@ public class Main {
 						System.out.println("Conta não encontrada.");
 					}
 
-
+					break;
 				case 6:
+					System.out.println("Insira o CPF do cliente para mostrar o relatório de depósito: ");
+					cpf = scanner.next();
+					scanner.nextLine(); // Consome a quebra de linha
+
+					contaEncontrada = false;
+					for (Conta conta : contas) {
+						if (conta.getCPF().equals(cpf)) {
+							contaEncontrada = true;
+						}
+					}
+
+					if (contaEncontrada) {
+						for (Conta conta : contas) {
+							if (conta.getCPF().equals(cpf)) {
+								conta.mostrarRelatorioDeposito();
+								break;
+							}
+						}
+					} else {
+						System.out.println("Conta não encontrada.");
+					}
+
+					break;
+
+
+				case 7:
 
 					break;
 
 			}
-		} while (opcao != 6);
+		} while (opcao != 7);
 
 	}
 }
