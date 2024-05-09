@@ -10,6 +10,7 @@ public class Conta {
     private String CPF;
     private float saldo = 0;
     ArrayList<RelatorioSaque> relatorioSaque = new ArrayList<>();
+    ArrayList<RelatorioDeposito> relatorioDeposito = new ArrayList<>();
 
     
 
@@ -106,7 +107,27 @@ public class Conta {
     }
 
     public void Depositar(float valor){
+        float saldoAnterior = getSaldo();
         setSaldo(getSaldo() + valor);
+        RelatorioDeposito relatorio = new RelatorioDeposito(this, valor, saldoAnterior, getSaldo());
+        relatorioDeposito.add(relatorio);
+    }
+
+    public void mostrarRelatorioDeposito(){
+        System.out.println("Relatorio de depositos da conta " + getNumeroConta());
+        if (relatorioDeposito.isEmpty()){
+            System.out.println("Nenhum deposito realizado.");
+        } else {
+            for (RelatorioDeposito relatorioDeposito : relatorioDeposito) {
+                //System.out.println("Valor depositado: " + relatorioDeposito.getvalorDeposito() + " //Saldo anterior: " + relatorioDeposito.getSaldoAnterior() + " //Saldo atual: " + relatorioDeposito.getSaldoFinal() + " //Hora do deposito: " + relatorioDeposito.gethoraDeposito());
+                System.out.println("Data do deposito: " + relatorioDeposito.gethoraDeposito());
+                System.out.println("Saldo anterior: " + relatorioDeposito.getSaldoAnterior());
+                System.out.println("Valor depositado: " + relatorioDeposito.getvalorDeposito());
+                System.out.println("Saldo final: " + relatorioDeposito.getSaldoFinal());
+                System.out.println("---------------------------------------------------");
+            }
+        }
+        
     }
 
 }
