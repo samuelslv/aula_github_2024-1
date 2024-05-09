@@ -12,7 +12,7 @@ public class Main {
 
             // Exibe o menu principal usando a classe Menu
             Menu mainMenu = new Menu("Menu Principal",
-                    Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar clientes", "Sair"));
+                    Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar clientes", "Gerar Relatorio de Saque", "Gerar Relatorio de Deposito", "Gerar Relatorio Geral", "Sair"));
             opcao = mainMenu.getSelection();
 
             switch (opcao) {
@@ -89,13 +89,68 @@ public class Main {
                     }
 
                     break;
-                case 5:
+                case 5: 
+                    System.out.print("Digite o CPF do cliente para gerar relatório de saque: ");
+                    String cpfRelatorio = scanner.nextLine();
+                    Cliente clienteRelatorio = null;
+                    for (Cliente cliente : clientes) {
+                        if (cliente.getCpf().equals(cpfRelatorio)) {
+                            clienteRelatorio = cliente;
+                            break;
+                        }
+                    }
+                    if (clienteRelatorio != null) {
+                        Relatorio.RelatorioDeSaqueCliente(clienteRelatorio);
+                    } else {
+                        System.out.println("Cliente não encontrado.");
+                    }
+
+                    break;
+
+                case 6: 
+                    System.out.println("Digite o CPF do cliente para gerar relatório de depósito: ");
+                    String cpfRelatorioDeposito = scanner.nextLine();
+                    Cliente clienteRelatorioDeposito = null;
+                    for (Cliente cliente : clientes) {
+                        if (cliente.getCpf().equals(cpfRelatorioDeposito)) {
+                            clienteRelatorioDeposito = cliente;
+                            break;
+                        }
+                    }
+                    if (clienteRelatorioDeposito != null) {
+                        Relatorio.RelatorioDeDepositoCliente(clienteRelatorioDeposito);
+                    } else {
+                        System.out.println("Cliente não encontrado.");
+                    }
+
+                    break;
+
+
+                case 7:
+                    System.out.println("Digite o CPF do cliente para gerar relatório geral: ");
+                    String cpfRelatorioGeral = scanner.nextLine();
+                    Cliente clienteRelatorioGeral = null;
+                    for (Cliente cliente : clientes) {
+                        if (cliente.getCpf().equals(cpfRelatorioGeral)) {
+                            clienteRelatorioGeral = cliente;
+                            break;
+                        }
+                    }
+                    if (clienteRelatorioGeral != null) {
+                        Relatorio.RelatorioGeral(clienteRelatorioGeral);
+                    } else {
+                        System.out.println("Cliente não encontrado.");
+                    }
+
+                    break;
+
+                case 8:
                     System.out.println("SAIR");
 
                     break;
 
             }
-        } while (opcao != 5);
+        } while (opcao != 8);
 
     }
 }
