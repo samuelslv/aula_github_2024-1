@@ -12,7 +12,7 @@ public class Main {
 		do {
 			// Exibe o menu principal usando a classe Menu
 			Menu mainMenu = new Menu("Menu Principal",
-					Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar Contas", "Relatorio Saque", "Relatorio Deposito", "Sair"));
+					Arrays.asList("Conta", "Cliente", "Realizar Operações", "Mostrar Contas", "Relatorio Saque", "Relatorio Deposito", "Relatorio Geral", "Sair"));
 			opcao = mainMenu.getSelection();
 
 			switch (opcao) {
@@ -203,7 +203,7 @@ public class Main {
 							}
 						}
 					} else {
-						System.out.println("Conta não encontrada.");
+						System.out.println("Conta não encontrada.\n");
 					}
 
 					break;
@@ -227,18 +227,43 @@ public class Main {
 							}
 						}
 					} else {
-						System.out.println("Conta não encontrada.");
+						System.out.println("Conta não encontrada.\n");
+					}
+
+					break;
+
+				case 7: 
+					System.out.println("Insira o CPF do cliente para mostrar o relatório geral: ");
+					cpf = scanner.next();
+					scanner.nextLine(); // Consome a quebra de linha
+
+					contaEncontrada = false;
+					for (Conta conta : contas) {
+						if (conta.getCPF().equals(cpf)) {
+							contaEncontrada = true;
+						}
+					}
+
+					if (contaEncontrada) {
+						for (Conta conta : contas) {
+							if (conta.getCPF().equals(cpf)) {
+								conta.mostrarRelatorioGeral();
+								break;
+							}
+						}
+					} else {
+						System.out.println("Conta não encontrada.\n");
 					}
 
 					break;
 
 
-				case 7:
+				case 8:
 
 					break;
 
 			}
-		} while (opcao != 7);
+		} while (opcao != 8);
 
 	}
 }
