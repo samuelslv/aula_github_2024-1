@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cliente {
@@ -5,6 +6,7 @@ public class Cliente {
     private String genero;
     private String CPF;
     private double saldo;
+    private ArrayList<Transacao> transacoes;
 
     public Cliente() {
         
@@ -15,6 +17,7 @@ public class Cliente {
         this.genero = genero;
         this.nome = nome;
         this.saldo = 0.0;
+        this.transacoes = new ArrayList<Transacao>();
     }
 
     // Getter para o atributo nome
@@ -51,6 +54,14 @@ public class Cliente {
         return this.saldo;
     }
 
+    public ArrayList<Transacao> getTransacoes(){
+        return this.transacoes;
+    }
+
+    private void setTransacoes(ArrayList<Transacao> transacoes){
+        this.transacoes = transacoes;
+    }
+
     private void setSaldo(double saldo){
         this.saldo = saldo;
     }
@@ -60,6 +71,8 @@ public class Cliente {
             return false;
         }
         this.setSaldo(this.getSaldo()+valor);
+        Transacao transacaoDeposito = new Transacao(2, valor);
+        this.transacoes.add(transacaoDeposito);
         return true;
     }
 
@@ -71,6 +84,10 @@ public class Cliente {
             return false;
         }
         this.setSaldo(this.getSaldo()-valor);
+
+        Transacao transacaoSaque = new Transacao(1, valor);
+        this.transacoes.add(transacaoSaque);
+
         return true;
     }
     
