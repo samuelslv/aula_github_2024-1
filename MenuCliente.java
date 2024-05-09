@@ -1,16 +1,17 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class Menu {
+public class MenuCliente {
+    
 	private String title;
 	private List<String> options;
 
-	public Menu(List<String> options) {
-		this.title = "Menu";
+	public MenuCliente(List<String> options) {
+		this.title = "Menu Cliente";
 		this.options = options;
 	}
 
-	public Menu(String title, List<String> options) {
+	public MenuCliente(String title, List<String> options) {
 		this.title = title;
 		this.options = options;
 	}
@@ -33,6 +34,7 @@ public class Menu {
 			catch (NumberFormatException e) {
 				op =0;
 			}
+			
 			if (op>=i){
 				System.out.println("Opcao errada!");
 				op=0;
