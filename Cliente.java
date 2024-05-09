@@ -7,13 +7,13 @@ public class Cliente {
     private boolean temConta;
 
     public Cliente() {
-
     }
 
     public Cliente(String nome, String cpf, String genero) {
         this.CPF = cpf;
         this.genero = genero;
         this.nome = nome;
+
         this.temConta = false;
     }
 
@@ -58,6 +58,7 @@ public class Cliente {
     }
 
     public Cliente criarCliente() {
+
         Scanner s = new Scanner(System.in);
         System.out.println("Insira seu nome:");
         String nome = s.nextLine();
@@ -65,7 +66,7 @@ public class Cliente {
         String genero = s.nextLine();
         System.out.println("Insira seu CPF:");
         String CPF = s.nextLine();
-
+ 
         return new Cliente(nome, CPF, genero);
     }
 }
