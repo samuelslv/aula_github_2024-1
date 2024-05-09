@@ -11,6 +11,7 @@ public class Conta {
     private float saldo = 0;
     ArrayList<RelatorioSaque> relatorioSaque = new ArrayList<>();
     ArrayList<RelatorioDeposito> relatorioDeposito = new ArrayList<>();
+    ArrayList<RelatorioGeral> relatorioGeral = new ArrayList<>();
 
     
 
@@ -86,13 +87,18 @@ public class Conta {
 
             RelatorioSaque relatorio = new RelatorioSaque(this, valor, saldoAnterior, getSaldo());
             relatorioSaque.add(relatorio);
+            RelatorioGeral relatorio2 = new RelatorioGeral(1, this);
+            relatorio2.setRelatorioSaque(relatorio);
+            relatorioGeral.add(relatorio2);
         } 
     }
 
     public void mostrarRelatorioSaque(){
+        System.out.println("---------------------------------------");
         System.out.println("Relatorio de saques da conta " + getNumeroConta());
+        System.out.println("---------------------------------------");
         if (relatorioSaque.isEmpty()){
-            System.out.println("Nenhum saque realizado.");
+            System.out.println("Nenhum saque realizado.\n");
         } else {
             for (RelatorioSaque relatorioSaque : relatorioSaque) {
                 //System.out.println("Valor sacado: " + relatorioSaque.getValorSaque() + " //Saldo anterior: " + relatorioSaque.getSaldoAnterior() + " //Saldo atual: " + relatorioSaque.getSaldoAtual() + " //Hora do saque: " + relatorioSaque.getHoraSaque());
@@ -100,7 +106,7 @@ public class Conta {
                 System.out.println("Saldo anterior: " + relatorioSaque.getSaldoAnterior());
                 System.out.println("Valor sacado: " + relatorioSaque.getValorSaque());
                 System.out.println("Saldo final: " + relatorioSaque.getSaldoFinal());
-                System.out.println("---------------------------------------------------");
+                System.out.println("---------------------------------------");
             }
         }
         
@@ -111,12 +117,18 @@ public class Conta {
         setSaldo(getSaldo() + valor);
         RelatorioDeposito relatorio = new RelatorioDeposito(this, valor, saldoAnterior, getSaldo());
         relatorioDeposito.add(relatorio);
+        RelatorioGeral relatorio2 = new RelatorioGeral(2, this);
+        relatorio2.setRelatorioDeposito(relatorio);
+        relatorioGeral.add(relatorio2);
     }
 
     public void mostrarRelatorioDeposito(){
+        System.out.println("---------------------------------------");
         System.out.println("Relatorio de depositos da conta " + getNumeroConta());
+        System.out.println("---------------------------------------");
         if (relatorioDeposito.isEmpty()){
-            System.out.println("Nenhum deposito realizado.");
+            System.out.println("Nenhum deposito realizado.\n");
+
         } else {
             for (RelatorioDeposito relatorioDeposito : relatorioDeposito) {
                 //System.out.println("Valor depositado: " + relatorioDeposito.getvalorDeposito() + " //Saldo anterior: " + relatorioDeposito.getSaldoAnterior() + " //Saldo atual: " + relatorioDeposito.getSaldoFinal() + " //Hora do deposito: " + relatorioDeposito.gethoraDeposito());
@@ -124,7 +136,32 @@ public class Conta {
                 System.out.println("Saldo anterior: " + relatorioDeposito.getSaldoAnterior());
                 System.out.println("Valor depositado: " + relatorioDeposito.getvalorDeposito());
                 System.out.println("Saldo final: " + relatorioDeposito.getSaldoFinal());
-                System.out.println("---------------------------------------------------");
+                System.out.println("---------------------------------------");
+            }
+        }
+        
+    }
+
+    public void mostrarRelatorioGeral(){
+        System.out.println("---------------------------------------");
+        System.out.println("Relatorio geral da conta " + getNumeroConta());
+        System.out.println("---------------------------------------");
+        if (relatorioGeral.isEmpty()){
+            System.out.println("Nenhuma operacao realizada.");
+        } else {
+            for (RelatorioGeral relatorioGeral : relatorioGeral) {
+                if (relatorioGeral.getTipoOperacao() == 1){
+                    System.out.println("Data do saque: " + relatorioGeral.getRelatorioSaque().getHoraSaque());
+                    System.out.println("Saldo anterior: " + relatorioGeral.getRelatorioSaque().getSaldoAnterior());
+                    System.out.println("Valor sacado: " + relatorioGeral.getRelatorioSaque().getValorSaque());
+                    System.out.println("Saldo final: " + relatorioGeral.getRelatorioSaque().getSaldoFinal());
+                } else {
+                    System.out.println("Data do deposito: " + relatorioGeral.getRelatorioDeposito().gethoraDeposito());
+                    System.out.println("Saldo anterior: " + relatorioGeral.getRelatorioDeposito().getSaldoAnterior());
+                    System.out.println("Valor depositado: " + relatorioGeral.getRelatorioDeposito().getvalorDeposito());
+                    System.out.println("Saldo final: " + relatorioGeral.getRelatorioDeposito().getSaldoFinal());
+                }
+                System.out.println("---------------------------------------");
             }
         }
         
